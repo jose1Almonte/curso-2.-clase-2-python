@@ -25,7 +25,7 @@ class Carton:
             if id not in ids:
                 ids.append(id)
                 return id
-
+    
     def inicializarCarton(self):
         completed_carton = []
 
@@ -51,6 +51,32 @@ class Carton:
             completed_carton.append(row)
             nmbr_rows_putted += 1
         return completed_carton
+    
+    def marcar_carton(self,letra: str, ficha: int):
+        match(letra):
+            case "B":
+                column = 0
+            case "I":
+                column = 1
+            case "N":
+                column = 2
+            case "G":
+                column = 3
+            case "O":
+                column = 4
+        
+        for i in range(len(self.carton)):
+            if self.carton[i][column] == ficha:
+                self.carton[i][column] = "X"
+
+    def gano_carton_lleno(self):
+        gano = True
+        for row in self.carton:
+            for element in row:
+                if element != "X":
+                    gano = False
+        
+        return gano, "Carton lleno"
 
 ids = []
 carton = Carton(ids)

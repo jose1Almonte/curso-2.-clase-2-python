@@ -10,6 +10,16 @@ class Bingo:
     def cantar_ficha(self):
         ficha,letra = self.sacar_ficha()
         print("Ficha:", letra+str(ficha))
+        self.rellenar_cartones(letra,ficha)
+
+
+    def rellenar_cartones(self, letra, ficha):
+        ganadores = []
+        for i in range(len(self.cartones)):
+            self.cartones[i].marcar_carton(letra, ficha)
+            if self.cartones[i].gano_carton_lleno():
+                ganadores.append(i)
+        return ganadores
 
     def sacar_ficha(self):
         while True:
