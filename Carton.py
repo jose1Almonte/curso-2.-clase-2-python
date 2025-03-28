@@ -1,3 +1,4 @@
+import copy
 import random
 
 
@@ -6,11 +7,12 @@ class Carton:
     def __init__(self, ids):
         self.id = self.generate_id(ids)
         self.carton = self.inicializarCarton()
+        self.carton_principio = copy.deepcopy(self.carton)
 
-    def show_card(self):
+    def show_card(self, isTheMarked: bool):
         print(f"      {self.id}        ")
         print("B  I  N  G  O")
-        for row in self.carton:
+        for row in (self.carton if isTheMarked else self.carton_principio):
             for i in range(len(row)):
                 if i == len(row)-1:
                     print(f"{row[i]}")
@@ -78,7 +80,4 @@ class Carton:
         
         return gano, "Carton lleno"
 
-ids = []
-carton = Carton(ids)
 
-carton.show_card()
