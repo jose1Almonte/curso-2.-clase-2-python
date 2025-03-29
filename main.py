@@ -19,7 +19,8 @@
 
 # lista_numeros = [5,6,4,32,1,2,3]
 # lista_numeros.sort()
-# print("indice: ",binary_search(lista_numeros,6))
+# print(lista_numeros)
+# print("indice: ",binary_search(lista_numeros,3))
 
 # # O(n)
 # arreglo = ["c","o","d","i","n","g"]
@@ -100,21 +101,21 @@
 # max_value = knapsack(weights, values, capacity)
 # print("Valor máximo:", max_value)
 
-# # O(n!)
-# def permute(arr):
-#     result = []
-#     if len(arr) == 0:
-#         return [[]]
-#     for i in range(len(arr)):
-#         elem = arr[i]
-#         rest = arr[:i] + arr[i+1:]
-#         for p in permute(rest):
-#             result.append([elem] + p)
-#     return result
+# O(n!)
+def permute(arr):
+    result = []
+    if len(arr) == 0:
+        return [[]]
+    for i in range(len(arr)):
+        elem = arr[i]
+        rest = arr[:i] + arr[i+1:]
+        for p in permute(rest):
+            result.append([elem] + p)
+    return result
 
-# # Ejemplo de uso
-# mi_lista = [1, 2, 3]
-# permutaciones = permute(mi_lista)
-# for p in permutaciones:
-#     print(p)
+# Ejemplo de uso
+mi_lista = [1, 2, 3, 2, 3,2, 3,2, 3, 2, 3,2, 3,2, 3]
+permutaciones = permute(mi_lista)
+for p in permutaciones:
+    print(p)
 
